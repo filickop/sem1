@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PetCare</string>
+    <string name="readdb">readDB</string>
+    <string name="todo">TODO</string>
+    <string name="druh">Druh:</string>
+    <string name="meno">Meno:</string>
+    <string name="ulo_i">Uložiť</string>
+    <string name="fotoapar_t">Fotoaparát</string>
+</resources>
