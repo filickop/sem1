@@ -21,14 +21,16 @@
         android:id="@+id/textMedicalInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Záznam"
-        android:inputType="textPersonName"
+        android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textMedicalInfoDate" />
+        app:layout_constraintTop_toBottomOf="@+id/textMedicalInfoDate"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLines="4"/>
 
     <TextView
         android:id="@+id/textView5"

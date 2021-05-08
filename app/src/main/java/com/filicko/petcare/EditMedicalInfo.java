@@ -24,20 +24,24 @@ public class EditMedicalInfo extends AppCompatActivity {
         datum = findViewById(R.id.textMedicalInfoDate);
         info = findViewById(R.id.textMedicalInfo);
         datePicker = new DatePicker();
+
     }
     public void saveMedicalInfo(View view) {
         position = getIntent().getIntExtra("position", 1);
-        String text = null;
-        String date = null;
-        databaseHelper.addMedicalInfoToDatabase(position + 1, text, date);
+        String text = info.getText().toString();
+        String date = datum.getText().toString();
+        databaseHelper.addMedicalInfoToDatabase(position, text, date);
         startActivity(new Intent(this, petActivity.class).putExtra("position", position));
+
 
     }
     public void pickDate(View view) {
-        datePicker.pickDate(this);
-        int[] time = datePicker.getDate();
-        System.out.println("datumdva" + time[0] + "." + time[1] + "." + time[2]);
-        datum.setText(time[0] + "." + time[1] + "." + time[2]);
+        System.out.println(datePicker);
+        datePicker.pickDate(this, ()->{
+            int[] time = datePicker.getDate();
+            datum.setText(time[2] + "." + time[1] + "." + time[0]);
+        });
+
     }
 
 }

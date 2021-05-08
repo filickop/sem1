@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
+import androidx.fragment.app.DialogFragment;
+
 import java.util.Calendar;
 import java.util.Date;
+import java.util.function.Function;
 
 public class DatePicker {
 
@@ -15,7 +18,7 @@ public class DatePicker {
     int year;
     int month;
     int day;
-    public void pickDate(Context context) {
+    public void pickDate(Context context, Runnable callback) {
         Calendar cal = Calendar.getInstance();
         year = cal.get(Calendar.YEAR);
         month = cal.get(Calendar.MONTH);
@@ -29,6 +32,7 @@ public class DatePicker {
                 System.out.println("tusom");
                 System.out.println(year + "." + month + "." + dayOfMonth);
                 setDate(year,month + 1, dayOfMonth);
+                callback.run();
             }
         };
     }
