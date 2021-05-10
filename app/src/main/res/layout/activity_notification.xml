@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".notification"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+
+
+        <Switch
+            android:id="@+id/jedloSwitchVecer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jedloSwitchObed"
+            app:layout_constraintTop_toTopOf="@+id/jedloSwitchObed" />
+
+        <TextView
+            android:id="@+id/nastavJedloObed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nastav čas"
+            app:layout_constraintEnd_toStartOf="@+id/nastavJedloVecer"
+            app:layout_constraintStart_toEndOf="@+id/nastavJedloRano"
+            app:layout_constraintTop_toTopOf="@+id/nastavJedloRano" />
+
+        <TextView
+            android:id="@+id/nastavJedloRano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nastav čas"
+            app:layout_constraintEnd_toStartOf="@+id/nastavJedloObed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/nastavJedloVecer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nastav čas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nastavJedloObed"
+            app:layout_constraintTop_toTopOf="@+id/nastavJedloObed" />
+
+        <Switch
+            android:id="@+id/jedloSwitchRano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/jedloSwitchObed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nastavJedloRano" />
+
+        <Switch
+            android:id="@+id/jedloSwitchObed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/jedloSwitchVecer"
+            app:layout_constraintStart_toEndOf="@+id/jedloSwitchRano"
+            app:layout_constraintTop_toTopOf="@+id/jedloSwitchRano" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Obed"
+            app:layout_constraintEnd_toStartOf="@+id/textView10"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Ráno"
+            app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Večer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Jedlo"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vodaSwitchObed" />
+
+        <Switch
+            android:id="@+id/vodaSwitchObed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/vodaSwitchVecer"
+            app:layout_constraintStart_toEndOf="@+id/vodaSwitchRano"
+            app:layout_constraintTop_toTopOf="@+id/vodaSwitchRano" />
+
+        <Switch
+            android:id="@+id/vodaSwitchVecer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vodaSwitchObed"
+            app:layout_constraintTop_toTopOf="@+id/vodaSwitchObed" />
+
+        <Switch
+            android:id="@+id/vodaSwitchRano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/vodaSwitchObed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nastavRanoVoda" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="Voda"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Ráno"
+            app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Obed"
+            app:layout_constraintEnd_toStartOf="@+id/textView10"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Večer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/nastavRanoVoda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nastav čas"
+            app:layout_constraintEnd_toStartOf="@+id/nastavObedVoda"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/nastavObedVoda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nastav čas"
+            app:layout_constraintEnd_toStartOf="@+id/NastavVecerVoda"
+            app:layout_constraintStart_toEndOf="@+id/nastavRanoVoda"
+            app:layout_constraintTop_toTopOf="@+id/nastavRanoVoda" />
+
+        <TextView
+            android:id="@+id/NastavVecerVoda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nastav čas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nastavObedVoda"
+            app:layout_constraintTop_toTopOf="@+id/nastavObedVoda" />
+
+        <Button
+            android:id="@+id/saveNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:text="@string/ulo_i"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jedloSwitchObed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

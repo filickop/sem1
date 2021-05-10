@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditPetActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
     <ImageView
         android:id="@+id/imageViewEditPet"
@@ -31,9 +36,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/druh"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/editDruh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editDruh" />
 
@@ -41,9 +47,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/meno"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/editMeno"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editMeno" />
 
@@ -51,12 +58,12 @@
         android:id="@+id/editMeno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:layout_marginTop="20dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="Meno"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/captureBtn" />
 
@@ -64,14 +71,14 @@
         android:id="@+id/editDruh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
         android:layout_marginTop="10dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="Druh"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editMeno"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editMeno" />
 
     <Button
         android:id="@+id/medicalInfoBtn"
@@ -90,31 +97,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Notifikácie"
+        android:onClick="openNotificationsActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicalInfoBtn" />
-    <Button
-        android:id="@+id/reminderBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Pripomienky"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationBtn" />
 
     <Button
         android:id="@+id/saveEditPetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Uložiť"
+        android:layout_marginTop="40dp"
         android:onClick="saveEditBtn"
+        android:text="Uložiť"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reminderBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/notificationBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

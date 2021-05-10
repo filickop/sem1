@@ -48,6 +48,9 @@ public class EditPetActivity extends AppCompatActivity {
         startActivity(new Intent(this, EditMedicalInfo.class).putExtra("position", position));
 
     }
+    public void openNotificationsActivity(View view) {
+        startActivity(new Intent(this, notification.class).putExtra("position", position));
+    }
     public void saveEditBtn(View view) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 

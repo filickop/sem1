@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".petActivity">-->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -64,27 +71,34 @@
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
 
-    <ScrollView
+    <!--<ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDruh">
+        app:layout_constraintTop_toBottomOf="@+id/tvDruh">-->
+
 
         <TableLayout
+            android:id="@+id/tabulka"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDruh">
 
-            <TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_column="1"
                     android:gravity="left"
                     android:padding="10dp"
                     android:text="Dátum"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -92,18 +106,27 @@
                     android:gravity="right"
                     android:padding="10dp"
                     android:text="Záznam"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    android:layout_height="wrap_content" />
+
             </TableRow>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/medInfoView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"/>
+
 
 
         </TableLayout>
-    </ScrollView>
-    
+
+
+
+
+    <!--</ScrollView>-->
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/editPetBtn"
     android:layout_width="wrap_content"
@@ -115,3 +138,5 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:srcCompat="@android:drawable/ic_menu_preferences" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!--
+</ScrollView>-->
