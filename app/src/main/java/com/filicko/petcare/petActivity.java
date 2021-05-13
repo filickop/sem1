@@ -43,6 +43,7 @@ public class petActivity extends AppCompatActivity {
         medInfoView = findViewById(R.id.medInfoView);
         setRecyclerView();
 
+
         editPetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +51,12 @@ public class petActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void setRecyclerView() {

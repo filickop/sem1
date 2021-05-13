@@ -58,19 +58,7 @@ public class EditMedicalInfo extends AppCompatActivity {
                 System.out.println("tusom");
                 System.out.println(year + "." + month + "." + dayOfMonth);
                 datum.setText(dayOfMonth + "." + month + "." + year);
-
-
-
             }
         };
     }
-    /*public void pickDate(View view) {
-        System.out.println(datePicker);
-        datePicker.pickDate(this, ()->{
-            int[] time = datePicker.getDate();
-            datum.setText(time[2] + "." + time[1] + "." + time[0]);
-        });
-
-    }*/
-
 }

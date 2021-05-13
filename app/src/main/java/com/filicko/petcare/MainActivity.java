@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -72,7 +73,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
 
+        finish();
+        moveTaskToBack(true);
+    }
     public void openAddPetActivity() {
         Intent intent = new Intent(this, addPetActivity.class);
         startActivity(intent);

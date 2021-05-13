@@ -7,7 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.ArrayAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -25,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Create Table
         String createTableBasicInfo = "create table " + TABLE_NAME + "(id INTEGER PRIMARY KEY, meno TEXT, druh TEXT, image BLOB)";
         String createTableMedicalInfo =  "create table " + TABLE_MEDICAL_INFO + "(id INTEGER PRIMARY KEY, idPet INTEGER, info TEXT, date TEXT)";
-        String createTableReminders = "create table " + TABLE_REMINDERS + "(id INTEGER PRIMARY KEY, idPet INTEGER, idBudik INTEGER, time TEXT)";
+        String createTableReminders = "create table " + TABLE_REMINDERS + "(id INTEGER PRIMARY KEY, idPet INTEGER, idBudik INTEGER, time TEXT, jeZapnuty INTEGER)";
                 db.execSQL(createTableBasicInfo);
                 db.execSQL(createTableMedicalInfo);
                 db.execSQL(createTableReminders);
@@ -55,11 +59,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_MEDICAL_INFO, null, contentValues);
         return true;
     }
-    public boolean addBudikToDatabase(int idPet, int idBudik, String cas) {
+    public boolean addBudikToDatabase(int idPet, int idBudik, String cas, int jeZapnuty) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         int id = jeVDatabaze(idPet, idBudik);
         contentValues.put("time", cas);
+        contentValues.put("jeZapnuty", jeZapnuty);
+        contentValues.put("idPet", idPet);
+        contentValues.put("idBudik", idBudik);
         if(id > 0) {
             Cursor cursor = sqLiteDatabase.rawQuery("select * from "+ TABLE_REMINDERS + " where id = ?", new String[] {String.valueOf(id)});
             long result = sqLiteDatabase.update(TABLE_REMINDERS, contentValues,"id=?", new String[] {String.valueOf(id)});
@@ -71,8 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         else {
-            contentValues.put("idPet", idPet);
-            contentValues.put("idBudik", idBudik);
             sqLiteDatabase.insert(TABLE_REMINDERS, null, contentValues);
             return true;
         }
@@ -176,5 +181,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return "Nastav čas";
+    }
+    public boolean getChecked(int idPet, int idBudik) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_REMINDERS + " where idPet = ?", new String[] {String.valueOf(idPet + 1)});
+        while (cursor.moveToNext()) {
+            if(cursor.getString(2).equals(String.valueOf(idBudik))) {
+                return (cursor.getInt(4)) == 1;
+            }
+        }
+        return false;
+    }
+    public Cursor getCur(String table) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        return sqLiteDatabase.rawQuery("select * from " + table , null);
+    }
+    public boolean compareTimes(String cas1) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Date cas = new Date();
+        Date aktualnyCas = new Date();
+        String aktCas = aktualnyCas.getHours() + ":" + aktualnyCas.getMinutes();
+        try {
+            cas = sdf.parse(cas1);
+            aktualnyCas = sdf.parse(aktCas);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long c1 = cas.getTime();
+        long c2 = aktualnyCas.getTime();
+
+        return c1 - c2  == 0;
+
     }
 }

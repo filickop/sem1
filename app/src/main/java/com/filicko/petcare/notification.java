@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -40,6 +41,8 @@ public class notification extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     int position;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,14 @@ public class notification extends AppCompatActivity {
         budik4.setText(databaseHelper.getCas(position, 4));
         budik5.setText(databaseHelper.getCas(position, 5));
         budik6.setText(databaseHelper.getCas(position, 6));
+        switch1.setChecked(databaseHelper.getChecked(position, 1));
+        switch2.setChecked(databaseHelper.getChecked(position, 2));
+        switch3.setChecked(databaseHelper.getChecked(position, 3));
+        switch4.setChecked(databaseHelper.getChecked(position, 4));
+        switch5.setChecked(databaseHelper.getChecked(position, 5));
+        switch6.setChecked(databaseHelper.getChecked(position, 6));
+
+
         budik1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,22 +127,121 @@ public class notification extends AppCompatActivity {
                 pickTime(v);
             }
         });
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!budik1.getText().equals("Nastav čas")) {
+                    if (isChecked) {
+                        System.out.println("je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 1, databaseHelper.getCas(position, 1), 1);
+                    } else {
+                        System.out.println("nie je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 1, databaseHelper.getCas(position, 1), 0);
+                    }
+                } else {
+                    switch1.setChecked(false);
+                }
+            }
+        });
+        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!budik2.getText().equals("Nastav čas")) {
+                    if (isChecked) {
+                        databaseHelper.addBudikToDatabase(position + 1, 2, databaseHelper.getCas(position, 2), 1);
+                    } else {
+                        databaseHelper.addBudikToDatabase(position + 1, 2, databaseHelper.getCas(position, 2), 0);
+                    }
+                } else {
+                    switch2.setChecked(false);
+                }
+            }
+        });
+        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!budik3.getText().equals("Nastav čas")) {
+                    if (isChecked) {
+                        System.out.println("je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 3, databaseHelper.getCas(position, 3), 1);
+                    } else {
+                        System.out.println("nie je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 3, databaseHelper.getCas(position, 3), 0);
+                    }
+                } else {
+                    switch3.setChecked(false);
+                }
+            }
+        });
+        switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!budik4.getText().equals("Nastav čas")) {
+                    if (isChecked) {
+                        System.out.println("je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 4, databaseHelper.getCas(position, 4), 1);
+                    } else {
+                        System.out.println("nie je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 4, databaseHelper.getCas(position, 4), 0);
+                    }
+                } else {
+                    switch4.setChecked(false);
+                }
+            }
+        });
+        switch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!budik5.getText().equals("Nastav čas")) {
+                    if (isChecked) {
+                        System.out.println("je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 5, databaseHelper.getCas(position, 5), 1);
+                    } else {
+                        System.out.println("nie je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 5, databaseHelper.getCas(position, 5), 0);
+                    }
+                } else {
+                    switch5.setChecked(false);
+                }
+            }
+        });
+        switch6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!budik6.getText().equals("Nastav čas")) {
+                    if (isChecked) {
+                        System.out.println("je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 6, databaseHelper.getCas(position, 6), 1);
+                    } else {
+                        System.out.println("nie je checked");
+                        databaseHelper.addBudikToDatabase(position + 1, 6, databaseHelper.getCas(position, 6), 0);
+                    }
+                } else {
+                    switch6.setChecked(false);
+                }
+            }
+        });
 
     }
-    public void generujUpozornenie() {
+    @Override
+    public void onBackPressed() {
+       //super.onBackPressed();
+        startActivity(new Intent(this, petActivity.class).putExtra("position", position));
+    }
+    public void generujUpozornenie () {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.HOUR_OF_DAY, 13);
+        calendar.set(calendar.HOUR_OF_DAY, 7);
         calendar.set(calendar.MINUTE, 42);
         calendar.set(Calendar.SECOND, 00);
 
         Intent intent = new Intent(this, Upozornenia.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
         AlarmManager alarmManagerTank = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManagerTank.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManagerTank.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 60000, pendingIntent);
         notifChannel();
     }
 
-    public void notifChannel() {
+    public void notifChannel () {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Moja notifikacia";
             String description = "tu napisem info ";
@@ -144,7 +254,7 @@ public class notification extends AppCompatActivity {
         }
     }
 
-    public void pickTime(View view) {
+    public void pickTime (View view){
 
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -154,52 +264,43 @@ public class notification extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 System.out.println(hourOfDay + ":" + minute);
                 String cas;
-                if(hourOfDay < 10) {
+                if (hourOfDay < 10) {
                     cas = "0" + hourOfDay + ":";
                 } else {
                     cas = hourOfDay + ":";
                 }
                 if (minute < 10) {
                     cas = cas + "0" + minute;
-                }
-                else {
+                } else {
                     cas = cas + minute;
                 }
-                if(budik1Clicked) {
+                if (budik1Clicked) {
                     budik1.setText(cas);
                     budik1Clicked = false;
-                    databaseHelper.addBudikToDatabase(position + 1, 1, cas);
-                }
-                else if (budik2Clicked) {
+                    databaseHelper.addBudikToDatabase(position + 1, 1, cas, 0);
+                } else if (budik2Clicked) {
                     budik2.setText(cas);
                     budik2Clicked = false;
-                    databaseHelper.addBudikToDatabase(position + 1, 2, cas);
-                }
-                else if (budik3Clicked) {
+                    databaseHelper.addBudikToDatabase(position + 1, 2, cas, 0);
+                } else if (budik3Clicked) {
                     budik3.setText(cas);
                     budik3Clicked = false;
-                    databaseHelper.addBudikToDatabase(position + 1, 3, cas);
-                }
-                else if (budik4Clicked) {
+                    databaseHelper.addBudikToDatabase(position + 1, 3, cas, 0);
+                } else if (budik4Clicked) {
                     budik4.setText(cas);
                     budik4Clicked = false;
-                    databaseHelper.addBudikToDatabase(position + 1, 4, cas);
-                }
-                else if (budik5Clicked) {
+                    databaseHelper.addBudikToDatabase(position + 1, 4, cas, 0);
+                } else if (budik5Clicked) {
                     budik5.setText(cas);
                     budik5Clicked = false;
-                    databaseHelper.addBudikToDatabase(position + 1, 5, cas);
-                }
-                else if (budik6Clicked) {
+                    databaseHelper.addBudikToDatabase(position + 1, 5, cas, 0);
+                } else if (budik6Clicked) {
                     budik6.setText(cas);
                     budik6Clicked = false;
-                    databaseHelper.addBudikToDatabase(position + 1, 6, cas);
+                    databaseHelper.addBudikToDatabase(position + 1, 6, cas, 0);
                 }
             }
         }, hour, minute, android.text.format.DateFormat.is24HourFormat(this));
         timePickerDialog.show();
-
     }
-
-
 }
