@@ -25,6 +25,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageViewEditPet"
             android:layout_centerHorizontal="true"
-            android:text="Meno" />
+            android:text="@string/meno" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

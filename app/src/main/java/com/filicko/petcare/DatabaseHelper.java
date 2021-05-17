@@ -41,6 +41,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         onCreate(db);
     }
+
+    /**
+     *
+     * @param meno meno peta ktory bude ulozeny v databaze
+     * @param druh druh peta ktory bude ulozeny v databaze
+     * @param image obrazok peta ktory bude ulozeny v databaze
+     * @return vrati true ak pet bol vlozeny
+     */
     public boolean addPetToDatabase(String meno, String druh, byte[] image) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -50,6 +58,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         return true;
     }
+
+    /**
+     *
+     * @param idPet id peta aby aplikacia vedela pre ktoreho peta je tento zaznam
+     * @param info zaznam ktory sa ulozi do databazy
+     * @param date datum zaznamu ktory bude ulozeny do databazy
+     * @return vrati true ked uspesne vlozi zaznam a datum
+     */
     public boolean addMedicalInfoToDatabase(int idPet, String info, String date) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -59,6 +75,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_MEDICAL_INFO, null, contentValues);
         return true;
     }
+
+    /**
+     *
+     * @param idPet id pet na zistenie pre ktoreho peta je tento budik
+     * @param idBudik id budik na zistenie ktory to je budik
+     * @param cas nastavenie hodnoty kedy sa ma budik spustit
+     * @param jeZapnuty na zistenie ci je budik zapnuty alebo nie
+     * @return vrati true ak bol budik vlozeny alebo update-ovany vrati false ak sa nevlozil
+     */
     public boolean addBudikToDatabase(int idPet, int idBudik, String cas, int jeZapnuty) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -82,10 +107,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    /**
+     *
+     * @param idPet id peta pre ktoreho je budik
+     * @param idBudik id budik pre zistenie konkretneho budika
+     * @return vrati na ktorom id je konkretny budik ak nenajde vrati -1
+     */
     public int jeVDatabaze(int idPet, int idBudik) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        System.out.println(idPet + " pet");
-        System.out.println(idBudik + " budik");
         Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_REMINDERS + " where idPet = ?", new String[] {String.valueOf(idPet)});
         while (cursor.moveToNext()) {
             if(cursor.getString(2).equals(String.valueOf(idBudik))) {
@@ -95,6 +125,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return -1;
 
     }
+
+    /**
+     *
+     * @param meno nove meno peta
+     * @param druh novy druh peta
+     * @param image novy obrazok peta
+     * @param id id peta
+     * @return vrati true ak sa podarilo spravit update false ak sa nepodarilo spravit update
+     */
     public boolean updatePetToDatabase(String meno, String druh, byte[] image, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -116,6 +155,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+    /**
+     *
+     * @param column nastavi z ktoreho stlpca tabulky potrebujeme data
+     * @return vrati arraylist dat
+     */
     public ArrayList getData(String column) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList arrayList;
@@ -139,6 +184,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+
+    /**
+     * @param idPet je na zistenie z ktoreho peta aplikacia chce info
+     * @param column nastavi z ktoreho stlpca dostane info
+     * @return vrati arraylist s datami
+     */
     public ArrayList getMedicalInfoData(int idPet, String column) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList<String> arrayList = new ArrayList<String>();
@@ -152,6 +203,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return arrayList;
     }
+
+    /**
+     *
+     * @param index index dat
+     * @param column stlpec dat
+     * @return vrati data na konkretnom indexe
+     */
     public ArrayList getDataAtIndex(int index, String column) {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList arrayList;
@@ -172,6 +230,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+
+    /**
+     *
+     * @param idPet id peta
+     * @param idBudik id konkretneho budika
+     * @return vrati cas konkretneho budik ak nie je nastaveny vrati nastav cas
+     */
     public String getCas(int idPet, int idBudik) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_REMINDERS + " where idPet = ?", new String[] {String.valueOf(idPet + 1)});
@@ -182,6 +247,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return "Nastav čas";
     }
+
+    /**
+     *
+     * @param idPet id peta
+     * @param idBudik id konkretneho budika
+     * @return vrati ci bol spusteny
+     */
     public boolean getChecked(int idPet, int idBudik) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_REMINDERS + " where idPet = ?", new String[] {String.valueOf(idPet + 1)});
@@ -192,11 +264,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    /**
+     *
+     * @param table nazov tabulky
+     * @return vrati cursor k danej tabulke
+     */
     public Cursor getCur(String table) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         return sqLiteDatabase.rawQuery("select * from " + table , null);
     }
+
+    /**
+     *
+     * @param cas1 cas ktory porovna s aktualnym
+     * @return vrati true ak cas je aktualny
+     */
     public boolean compareTimes(String cas1) {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         Date cas = new Date();
@@ -213,6 +297,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long c2 = aktualnyCas.getTime();
 
         return c1 - c2  == 0;
-
     }
 }

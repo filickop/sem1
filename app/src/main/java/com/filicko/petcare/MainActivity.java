@@ -73,17 +73,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
-
         finish();
         moveTaskToBack(true);
     }
+
+    /**
+     * otvori AddPetActivity
+     */
     public void openAddPetActivity() {
         Intent intent = new Intent(this, addPetActivity.class);
         startActivity(intent);
 
     }
+
+    /**
+     * otvori petAktivitu s konkretnym petom ktory je na position
+     * @param position pozicia peta
+     */
     public void openPetActivity(int position) {
         Intent intent = new Intent(this, petActivity.class).putExtra("position", position);
         startActivity(intent);

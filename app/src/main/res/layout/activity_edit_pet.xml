@@ -8,7 +8,7 @@
     tools:context=".EditPetActivity">
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent">
 
     <ImageView
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/fotoapar_t"
+        android:text="@string/fotoaparat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewEditPet" />
@@ -61,7 +61,7 @@
         android:layout_marginTop="20dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Meno"
+        android:hint="@string/meno"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -74,7 +74,7 @@
         android:layout_marginTop="10dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Druh"
+        android:hint="@string/druh"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Zdravotná karta"
+        android:text="@string/zdravotnaKarta"
         android:onClick="medicalInfoBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Notifikácie"
+        android:text="@string/notifikacie"
         android:onClick="openNotificationsActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:onClick="saveEditBtn"
-        android:text="Uložiť"
+        android:text="@string/ulozit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

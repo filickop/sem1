@@ -1,9 +1,23 @@
 <resources>
     <string name="app_name">PetCare</string>
-    <string name="readdb">readDB</string>
     <string name="todo">TODO</string>
-    <string name="druh">Druh:</string>
-    <string name="meno">Meno:</string>
-    <string name="ulo_i">Uložiť</string>
-    <string name="fotoapar_t">Fotoaparát</string>
+    <string name="druhD">Druh:</string>
+    <string name="menoD">Meno:</string>
+    <string name="druh">Druh</string>
+    <string name="meno">Meno</string>
+    <string name="ulozit">Uložiť</string>
+    <string name="fotoaparat">Fotoaparát</string>
+    <string name="zaznam">Záznam</string>
+    <string name="datumD">Dátum:</string>
+    <string name="zaznamD">Záznam:</string>
+    <string name="nastavDatum">Nastav Dátum</string>
+    <string name="zdravotnaKarta">Zdravotná karta</string>
+    <string name="notifikacie">Notifikácie</string>
+    <string name="nastavCas">Nastav čas</string>
+    <string name="obed">Obed</string>
+    <string name="rano">Ráno</string>
+    <string name="vecer">Večer</string>
+    <string name="jedlo">Jedlo</string>
+    <string name="voda">Voda</string>
+    <string name="datum">Dátum</string>
 </resources>

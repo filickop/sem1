@@ -225,7 +225,7 @@ public class notification extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-       //super.onBackPressed();
+        finish();
         startActivity(new Intent(this, petActivity.class).putExtra("position", position));
     }
     public void generujUpozornenie () {

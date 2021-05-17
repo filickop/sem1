@@ -55,16 +55,23 @@ public class petActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        finish();
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    /**
+     * nastavi recyclerView pre medInfo
+     */
     private void setRecyclerView() {
         medInfoView.setHasFixedSize(true);
         medInfoView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MedInfoAdapter(this, getList());
         medInfoView.setAdapter(adapter);
     }
+
+    /**
+     * @return vrati z databazy medInfo zaznamy a datumy
+     */
     private ArrayList<MedInfoModel> getList() {
         ArrayList<MedInfoModel> medInfoArrayList = new ArrayList<>();
         ArrayList<String> datum = databaseHelper.getMedicalInfoData(position, "date");
@@ -77,8 +84,11 @@ public class petActivity extends AppCompatActivity {
         return medInfoArrayList;
     }
 
+    /**
+     * Otvori aktivitu EditPetAktivity
+     * @param position cislo peta ktoreho si uzivatel klikne
+     */
     public void openEditPetActivity(int position) {
         startActivity(new Intent(this, EditPetActivity.class).putExtra("position", position));
     }
-
 }

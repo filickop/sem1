@@ -45,6 +45,12 @@ public class addPetActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * po splneni podmienok ulozi peta do databazy
+     * ak podmienky nie su splnene vypise co treba spravit
+     * @param view parameter potrebny pre funkcie tlacidla
+     */
     public void saveButton(View view) {
 
         TextView editMeno = findViewById(R.id.editMeno);
@@ -74,7 +80,7 @@ public class addPetActivity extends AppCompatActivity {
             if(databaseHelper.addPetToDatabase(meno, druh, fotka)) {
 
 
-                Toast.makeText(getApplicationContext(), "Meno vlozene...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Zvieratko vlozene...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
@@ -90,5 +96,10 @@ public class addPetActivity extends AppCompatActivity {
             imageView.setImageBitmap(captureImage);
 
         }
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="49dp"
+        android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="@string/druh"
+        android:text="@string/druhD"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="230dp"
-        android:text="@string/meno"
+        android:text="@string/menoD"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,34 +34,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="221dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Meno"
+        android:hint="@string/meno"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editDruh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="10dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Druh"
+        android:hint="@string/druh"
         android:inputType="textPersonName"
         android:onClick="saveButton"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editMeno"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editMeno" />
 
     <Button
         android:id="@+id/saveAddPet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="102dp"
-        android:text="@string/ulo_i"
         android:onClick="saveButton"
+        android:text="@string/ulozit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDruh" />
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:text="@string/fotoapar_t"
+        android:text="@string/fotoaparat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCapture" />

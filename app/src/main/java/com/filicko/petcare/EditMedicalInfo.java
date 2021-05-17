@@ -33,6 +33,11 @@ public class EditMedicalInfo extends AppCompatActivity {
         datum = findViewById(R.id.textMedicalInfoDate);
         info = findViewById(R.id.textMedicalInfo);
     }
+
+    /**
+     * @param view parameter pre funkcnost tlacidla
+     * ulozi zaznam do databazy a prehodi uzivatela do petAktivity
+     */
     public void saveMedicalInfo(View view) {
         position = getIntent().getIntExtra("position", 1);
         String text = info.getText().toString();
@@ -42,6 +47,11 @@ public class EditMedicalInfo extends AppCompatActivity {
 
 
     }
+
+    /**
+     * spusti dialog a pouzivatel si moze nastavit datum
+     * @param view pre funkcnost textView na nastavenie datumu
+     */
     public void pickDate(View view) {
         Calendar cal = Calendar.getInstance();
         year = cal.get(Calendar.YEAR);
@@ -60,5 +70,10 @@ public class EditMedicalInfo extends AppCompatActivity {
                 datum.setText(dayOfMonth + "." + month + "." + year);
             }
         };
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(this, petActivity.class).putExtra("position", position));
     }
 }

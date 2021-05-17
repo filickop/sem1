@@ -49,13 +49,28 @@ public class EditPetActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * spusti aktivitu editMedicalInfo pre konkretneho peta
+     * @param view pre funkcnost tlacidla
+     */
     public void medicalInfoBtn(View view) {
         startActivity(new Intent(this, EditMedicalInfo.class).putExtra("position", position));
 
     }
+
+    /**
+     * otvori aktivitu s notifikaciami
+     * @param view pre funkcnost tlacidla
+     */
     public void openNotificationsActivity(View view) {
         startActivity(new Intent(this, notification.class).putExtra("position", position));
     }
+
+    /**
+     * ulozi do databazy upravene udaje o petovi
+     * @param view pre funkcnost tlacidla
+     */
     public void saveEditBtn(View view) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
@@ -85,7 +100,11 @@ public class EditPetActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Pet zmeneny...", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, petActivity.class).putExtra("position", position));
             }
-
         }
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(this, petActivity.class).putExtra("position", position));
     }
 }
