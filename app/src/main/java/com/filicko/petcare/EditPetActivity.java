@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class EditPetActivity extends AppCompatActivity {
     TextView editDruh;
     ImageView imageView;
     DatabaseHelper databaseHelper;
+    Button captureBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,14 @@ public class EditPetActivity extends AppCompatActivity {
         editMeno.setText((String) databaseHelper.getDataAtIndex(position, "meno").get(0));
         editDruh.setText((String) databaseHelper.getDataAtIndex(position, "druh").get(0));
         imageView.setImageBitmap(bm);
-
+        captureBtn = findViewById(R.id.captureBtn);
+        captureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 100);
+            }
+        });
 
     }
 
