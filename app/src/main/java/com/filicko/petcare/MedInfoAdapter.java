@@ -16,6 +16,11 @@ public class MedInfoAdapter extends RecyclerView.Adapter<MedInfoAdapter.ViewHold
     Context context;
     ArrayList<MedInfoModel> medInfoList;
 
+    /**
+     *
+     * @param context context aktivity
+     * @param medInfoList zaznamy z databazy medInfo
+     */
     public MedInfoAdapter(Context context, ArrayList<MedInfoModel> medInfoList) {
         this.context = context;
         this.medInfoList = medInfoList;
@@ -45,6 +50,9 @@ public class MedInfoAdapter extends RecyclerView.Adapter<MedInfoAdapter.ViewHold
         return medInfoList.size();
     }
 
+    /**
+     * classa na na zobrazovanie v recycler view
+     */
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView medDatumText;
         TextView medInfoText;

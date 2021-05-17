@@ -51,6 +51,14 @@ public class Upozornenia extends BroadcastReceiver {
             }
         }
     }
+
+    /**
+     * metoda na vytvorenie notifikacie
+     * @param context
+     * @param string
+     * @param meno meno peta
+     * @param id id notifikacie
+     */
     public void upozornenie(Context context, String string, String meno, int id){
 
         NotificationCompat.Builder ncb = new NotificationCompat.Builder(context, "upozornenie")

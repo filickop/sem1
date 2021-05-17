@@ -26,12 +26,14 @@ public class notification extends AppCompatActivity {
     TextView budik4;
     TextView budik5;
     TextView budik6;
+
     boolean budik1Clicked;
     boolean budik2Clicked;
     boolean budik3Clicked;
     boolean budik4Clicked;
     boolean budik5Clicked;
     boolean budik6Clicked;
+
     Switch switch1;
     Switch switch2;
     Switch switch3;
@@ -41,8 +43,6 @@ public class notification extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     int position;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,6 +228,10 @@ public class notification extends AppCompatActivity {
         finish();
         startActivity(new Intent(this, petActivity.class).putExtra("position", position));
     }
+
+    /**
+     * metoda na nastavenie notifikacie
+     */
     public void generujUpozornenie () {
         Calendar calendar = Calendar.getInstance();
         calendar.set(calendar.HOUR_OF_DAY, 7);
@@ -241,6 +245,9 @@ public class notification extends AppCompatActivity {
         notifChannel();
     }
 
+    /**
+     * metoda na vytvorenie notifikacneho kanalu
+     */
     public void notifChannel () {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Moja notifikacia";
@@ -254,6 +261,10 @@ public class notification extends AppCompatActivity {
         }
     }
 
+    /**
+     * spusti dialog na vybratie casu
+     * @param view potrebny na funkcnost tejto metody
+     */
     public void pickTime (View view){
 
         Calendar calendar = Calendar.getInstance();

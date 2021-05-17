@@ -99,12 +99,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Adapter pre grid view
+     */
     public class CustomAdapter extends BaseAdapter {
         private ArrayList<String> imageNames;
         private ArrayList<Bitmap> imagePhoto;
         private Context context;
         private LayoutInflater layoutInflater;
 
+        /**
+         *
+         * @param imageNames meno peta
+         * @param imagePhoto fotka peta
+         * @param context context aktivity
+         */
         public CustomAdapter(ArrayList<String> imageNames, ArrayList<Bitmap> imagePhoto, Context context) {
             this.imageNames = imageNames;
             this.imagePhoto = imagePhoto;
