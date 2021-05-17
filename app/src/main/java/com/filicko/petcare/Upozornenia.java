@@ -54,8 +54,8 @@ public class Upozornenia extends BroadcastReceiver {
 
     /**
      * metoda na vytvorenie notifikacie
-     * @param context
-     * @param string
+     * @param context context aktivity
+     * @param string text ktory bude zobrazovat notifikacia
      * @param meno meno peta
      * @param id id notifikacie
      */
